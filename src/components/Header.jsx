@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   return (
@@ -15,13 +16,18 @@ export default function Header() {
         </Link>
 
         {/* add navigation menu */}
-          <nav>
-            <ul className="flex gap-4">
+        <nav>
+          <ul className="flex gap-4">
             <Link href="/" >Home</Link>
             <Link href="/about" >About</Link>
-            <Link href="/sign-in" >Sign in</Link>
-            </ul>
-          </nav>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+          </ul>
+        </nav>
 
       </div>
     </header>
